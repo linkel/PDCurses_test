@@ -2,17 +2,19 @@
 #include <stdlib.h>
 #include <curses.h>
 
+//This is the map! It is an array that holds a bunch of chars.
 char *map[]={
-"***************",
-"*      *      *",
-"*             *",
-"*      *** ****",
-"**** ***   *  *",
-"*          *  *",
-"*          *  *",
-"*             *",
-"*          *  *",
-"***************"
+"###############",
+"#         #  T#",
+"#            T#",
+"#         #####",
+"#####         #",
+"#   #         #",
+"#         N   #",
+"#   #         #",
+"#b  #         #",
+"###############",
+"Hit q to quit. "
 };
 
 int main()
@@ -28,7 +30,7 @@ int main()
     noecho(); //Turns off echo, which is when input character shows on screen.
     while('q'!=(ch=getch()))
     {
-        for(yy=0;yy<10;yy++){
+        for(yy=0;yy<11;yy++){
             for(xx=0;xx<15;xx++){
                 mvaddch(yy,xx,map[yy][xx]);
             }
