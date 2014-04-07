@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1396762325 source:c:\users\qb\workspace\ncursetest1\main.c
+1396846328 source:c:\users\qb\workspace\ncursetest1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<curses.h>

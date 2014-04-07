@@ -2,40 +2,55 @@
 #include <stdlib.h>
 #include <curses.h>
 
+char *map[]={
+"***************",
+"*      *      *",
+"*             *",
+"*      *** ****",
+"**** ***   *  *",
+"*          *  *",
+"*          *  *",
+"*             *",
+"*          *  *",
+"***************"
+};
+
 int main()
 {
-    int x = 5;
-    int y = 5;
+    keypad(initscr(),1);
+    int x = 2;
+    int y = 2;
+    int yy;
+    int xx;
     int ch; //Key input variable
-    initscr();
     curs_set(0);
-    keypad(stdscr, TRUE);
+    //keypad(stdscr, TRUE);
     noecho(); //Turns off echo, which is when input character shows on screen.
-    while(1)
+    while('q'!=(ch=getch()))
     {
-        mvprintw(y,x, "X");
-        ch = getch();
-        if (ch == KEY_DOWN)
+        for(yy=0;yy<10;yy++){
+            for(xx=0;xx<15;xx++){
+                mvaddch(yy,xx,map[yy][xx]);
+            }
+        }
+        if (ch == KEY_DOWN && ' '==map[y+1][x])
         {
             y++;
-            clear();
         }
-        if (ch == KEY_UP)
+        if (ch == KEY_UP && ' '==map[y-1][x])
         {
             y--;
-            clear();
         }
-        if (ch == KEY_LEFT)
+        if (ch == KEY_LEFT && ' '==map[y][x-1])
         {
             x--;
-            clear();
         }
-        if (ch == KEY_RIGHT)
+        if (ch == KEY_RIGHT && ' '==map[y][x+1])
         {
             x++;
-            clear();
         }
-        refresh();
+        mvaddch(y,x,'@');
+        //refresh();
     }
     endwin();
 
